@@ -4,3 +4,10 @@ This is a personal project & challenge. The conditions are:
 - two files max.
 - - one for the main script
 - - another for the data
+
+
+It was because I occasionally add things like
+```
+echo "Do xyz"
+```
+to my `~/.zshrc`, and I thought, "maybe i should make it real :3"
