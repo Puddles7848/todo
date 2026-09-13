@@ -20,7 +20,7 @@ else:
     raise NotImplementedError("why is your os not posix or nt what are you even using (╥﹏╥)")
 
 # Make sure it exists
-if not DATAFILE.exists:
+if not DATAFILE.exists():
     DATAFILE.touch()
 
 file_descriptor = DATAFILE.open()
