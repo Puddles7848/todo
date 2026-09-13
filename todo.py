@@ -23,11 +23,18 @@ else:
 if not DATAFILE.exists:
     DATAFILE.touch()
 
+file_descriptor = DATAFILE.open()
 
 # Default data
-data = {
+default_data = {
     "config": {
         "maxlen": 16
     },
     "data": []
 }
+
+# Load data :3
+try:
+    json.load(file_descriptor)
+except json.JSONDecodeError:
+    json.dump(default_data, file_descriptor)
