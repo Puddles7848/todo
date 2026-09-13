@@ -22,3 +22,14 @@ else:
 # Make sure it exists
 if not DATAFILE.exists:
     DATAFILE.touch()
+
+
+# Default data
+data = {
+    "config": {
+        "maxlen": 16
+    },
+    "data": [
+
+    ]
+}
