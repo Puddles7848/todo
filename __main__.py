@@ -23,7 +23,7 @@ else:
 if not DATAFILE.exists():
     DATAFILE.touch()
 
-file_descriptor = DATAFILE.open("rt+")
+fd = DATAFILE.open("rt+")
 
 # Default data
 default_data = {
@@ -35,7 +35,7 @@ default_data = {
 
 # Load data :3
 try:
-    json.load(file_descriptor)
+    json.load(fd)
 except json.JSONDecodeError:
-    file_descriptor.seek(0);file_descriptor.truncate()
-    json.dump(default_data, file_descriptor)
+    fd.seek(0);fd.truncate()
+    json.dump(default_data, fd)
