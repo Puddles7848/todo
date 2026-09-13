@@ -23,7 +23,7 @@ else:
 if not DATAFILE.exists():
     DATAFILE.touch()
 
-file_descriptor = DATAFILE.open()
+file_descriptor = DATAFILE.open("t+")
 
 # Default data
 default_data = {
