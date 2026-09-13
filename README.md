@@ -20,3 +20,4 @@ Anyway, you can change it in the data yourself. I'll document it when I get ther
 
 ## To-do (the actual to-do list for this project)
 1. Switch from File Descriptors to something custom.
+2. Add arguments using argparse (to control)
