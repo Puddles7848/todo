@@ -25,16 +25,18 @@ else:
 if not DATAFILE.exists():
     DATAFILE.touch()
 
-fd = None
+def write(file: os.PathLike, str: str):
+    with open(file) as f:
+        f.write(str)
+def read(file: os.PathLike) -> str:
+    with open(file) as f:
+        return f.read()
 
 # Default data
 default_data = {"config": {"maxlen": 16}, "data": []}
 
 # Load data :3
 try:
-    json.load(fd)
+    json.loads(read(DATAFILE))
 except json.JSONDecodeError:
-    fd.seek(0)
-    fd.truncate()
-    json.dump(default_data, fd)
-    fd.flush()
+    write(DATAFILE, json.dumps(default_data))
