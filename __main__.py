@@ -39,3 +39,4 @@ try:
 except json.JSONDecodeError:
     fd.seek(0);fd.truncate()
     json.dump(default_data, fd)
+    fd.flush()
