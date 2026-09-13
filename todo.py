@@ -29,7 +29,5 @@ data = {
     "config": {
         "maxlen": 16
     },
-    "data": [
-
-    ]
+    "data": []
 }
