@@ -37,4 +37,5 @@ default_data = {
 try:
     json.load(file_descriptor)
 except json.JSONDecodeError:
+    file_descriptor.seek(0);file_descriptor.truncate()
     json.dump(default_data, file_descriptor)
