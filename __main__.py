@@ -26,10 +26,10 @@ if not DATAFILE.exists():
     DATAFILE.touch()
 
 def write(file: os.PathLike, str: str):
-    with open(file) as f:
+    with open(file, "wt") as f:
         f.write(str)
 def read(file: os.PathLike) -> str:
-    with open(file) as f:
+    with open(file, "rt") as f:
         return f.read()
 
 # Default data
