@@ -41,8 +41,11 @@ def read(file: os.PathLike) -> object:
 default_data = {"config": {"maxlen": 8}, "data": []}
 
 
-# Load data :3
+# Try load data
 try:
     read(DATAFILE)
 except json.JSONDecodeError:
     write(DATAFILE, default_data)
+
+# ARGUMENT TIME (╥﹏╥)
+parser = argparse.ArgumentParser
