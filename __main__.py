@@ -49,10 +49,3 @@ except json.JSONDecodeError:
 
 # ARGUMENT TIME (╥﹏╥)
 parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list...")
-parser.add_argument("verb", dest="verb")
-
-subparser = parser.add_subparsers(help="i'll do this later...", dest="noun")
-parser_add = subparser.add_parser("add")
-
-args = parser.parse_args()
-print(args)
