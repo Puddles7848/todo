@@ -22,13 +22,13 @@ else:
     )
 
 # Make sure it exists
-if not DATAFILE.exists():
-    DATAFILE.touch()
+DATAFILE.parent.mkdir(exist_ok=True, parents=True)
+DATAFILE.touch(exist_ok=True)
 
-def write(file: os.PathLike, obj):
+def write(file: os.PathLike, obj: object):
     with open(file, "wt") as f:
         json.dump(obj, f)
-def read(file: os.PathLike) -> str:
+def read(file: os.PathLike) -> object:
     with open(file, "rt") as f:
         return json.load(f)
 
