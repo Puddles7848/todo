@@ -25,12 +25,12 @@ else:
 if not DATAFILE.exists():
     DATAFILE.touch()
 
-def write(file: os.PathLike, str: str):
+def write(file: os.PathLike, obj):
     with open(file, "wt") as f:
-        f.write(str)
+        json.dump(obj, f)
 def read(file: os.PathLike) -> str:
     with open(file, "rt") as f:
-        return f.read()
+        return json.load(f)
 
 # Default data
 default_data = {"config": {"maxlen": 16}, "data": []}
