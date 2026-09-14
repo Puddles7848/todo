@@ -51,3 +51,6 @@ except json.JSONDecodeError:
 parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list...")
 parser.add_argument("verb")
 args = parser.parse_args()
+
+subparser = parser.add_subparsers(help="i'll do this later...")
+parser_add = subparser.add_parser("add")
