@@ -37,6 +37,6 @@ default_data = {"config": {"maxlen": 16}, "data": []}
 
 # Load data :3
 try:
-    json.loads(read(DATAFILE))
+    read(DATAFILE)
 except json.JSONDecodeError:
-    write(DATAFILE, json.dumps(default_data))
+    write(DATAFILE, default_data)
