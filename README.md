@@ -13,10 +13,11 @@ echo "Do xyz"
 to my `~/.zshrc`, and I thought, "maybe i should make it real :3"
 
 
-## Why 16 length max (by default)?
-Sixteen is a nice power of two...
+## Why 8 length max (by default)?
+Eight is a nice power of two (2^3)...
 And also so it doesn't get cluttered.
 Anyway, you can change it in the data yourself. I'll document it when I get there...
 
 ## To-do (the actual to-do list for this project)
 1. Add arguments using argparse (to control)
+2. Document like what like 19 said (╥﹏╥)

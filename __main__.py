@@ -33,7 +33,7 @@ def read(file: os.PathLike) -> object:
 
 
 # Default data
-default_data = {"config": {"maxlen": 16}, "data": []}
+default_data = {"config": {"maxlen": 8}, "data": []}
 
 
 # Load data :3
