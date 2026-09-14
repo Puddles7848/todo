@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import os
 from pathlib import Path
@@ -23,10 +24,14 @@ else:
 # Make sure it exists
 DATAFILE.parent.mkdir(exist_ok=True, parents=True)
 DATAFILE.touch(exist_ok=True)
+
+
 # Read/Write functions
 def write(file: os.PathLike, obj: object):
     with open(file, "wt") as f:
         json.dump(obj, f)
+
+
 def read(file: os.PathLike) -> object:
     with open(file, "rt") as f:
         return json.load(f)
