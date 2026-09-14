@@ -48,4 +48,5 @@ except json.JSONDecodeError:
     write(DATAFILE, default_data)
 
 # ARGUMENT TIME (╥﹏╥)
-parser = argparse.ArgumentParser
+parser = argparse.ArgumentParser(prog="Todo", description="This is a to-do list...")
+parser.add_argument
