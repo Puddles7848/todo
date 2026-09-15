@@ -1,0 +1,11 @@
+[project]
+name = "To-do"
+
+[tool.pyright]
+reportArgumentType = false
+reportIndexIssue = false
+reportMissingTypeArgument = false
+reportConstantRedefinition = false
+reportAny = false
+reportUnknownArgumentType = false
+reportUnknownParameterType = false
