@@ -69,21 +69,31 @@ args = parser.parse_args()
 # Definitions2
 def touch(noun: str):
     # Read
-    tmp = read(DATAFILE)
+    buffer = read(DATAFILE)
     # Edit
-    if noun in tmp["data"]:
+    if noun in buffer["data"]:
         print("Item already exists! (Case-sensitive)")
         sys.exit(1)
     else:
-        tmp["data"].insert(0, noun)
+        buffer["data"].insert(0, noun)
     # Flush
-    write(DATAFILE, tmp)
-    del tmp
+    write(DATAFILE, buffer)
+    del buffer
 
 
 
-def rm(noun):
-    pass
+def rm(noun: str):
+    # Read
+    buffer = read(DATAFILE)
+    # Edit
+    if noun in buffer["data"]:
+        buffer["data"].remove(noun)
+    else:
+        print("Item doesn't exist! (Case-sensitive)")
+        sys.exit(1)
+    # Flush
+    write(DATAFILE, buffer)
+    del buffer
 
 
 def ls():
