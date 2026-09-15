@@ -9,12 +9,12 @@ DATAFILE = None
 
 if os.name == "posix":
     if os.getenv("XDG_DATA_HOME"):
-        DATAFILE = Path(os.getenv("XDG_DATA_HOME")) / "todo.json"  # pyright: ignore [reportArgumentType]
+        DATAFILE = Path(os.getenv("XDG_DATA_HOME")) / "todo.json"
     else:
         DATAFILE = Path.home() / ".local" / "share" / "todo.json"
 elif os.name == "nt":
     if os.getenv("APPDATA"):
-        DATAFILE = Path(os.getenv("APPDATA")) / "todo.json"  # pyright: ignore [reportArgumentType]
+        DATAFILE = Path(os.getenv("APPDATA")) / "todo.json"
     else:
         raise OSError("%APPDATA% is not set???")
 else:
@@ -27,23 +27,26 @@ DATAFILE.touch(exist_ok=True)
 
 
 # Read/Write functions
-def write(file: os.PathLike, obj: object):
-    with open(file, "wt") as f:
+def write(fp: os.PathLike, obj: object):
+    with open(fp, "wt") as f:
         json.dump(obj, f)
 
 
-def read(file: os.PathLike) -> object:
-    with open(file, "rt") as f:
+def read(fp: os.PathLike) -> object:
+    with open(fp, "rt") as f:
         return json.load(f)
 
 
 # Default data
-default_data = {"config": {"maxlen": 8}, "data": []}
+default_data: dict[str, dict[str, int] | list[str]] = {
+    "config": {"maxlen": 8},
+    "data": [],
+}
 
 
 # Try load data
 try:
-    read(DATAFILE)
+    data = read(DATAFILE)
 except json.JSONDecodeError:
     write(DATAFILE, default_data)
 
@@ -51,13 +54,33 @@ except json.JSONDecodeError:
 parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list...")
 subparser = parser.add_subparsers(dest="verb", required=True)
 
-add_parser = subparser.add_parser("add")
-add_parser.add_argument("thing")
+add_parser = subparser.add_parser("touch")
+_ = add_parser.add_argument("noun")
 
-del_parser = subparser.add_parser("del")
-del_parser.add_argument("thing")
+del_parser = subparser.add_parser("rm")
+_ = del_parser.add_argument("noun")
 
-list_parser = subparser.add_parser("list")
+list_parser = subparser.add_parser("ls")
 
 args = parser.parse_args()
-print(args)
+
+
+# Definitions2
+def touch(noun):
+    _ = read(DATAFILE)
+
+
+def rm(noun):
+    pass
+
+
+def ls():
+    print(read(DATAFILE)["data"])
+
+
+if args.verb == "touch":
+    touch(args.noun)
+elif args.verb == "rm":
+    rm(args.noun)
+elif args.verb == "ls":
+    ls()
