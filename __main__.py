@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 # Data File
@@ -66,10 +67,18 @@ args = parser.parse_args()
 
 
 # Definitions2
-def touch(noun):
-    tmp: list = read(DATAFILE)["data"]
-    if noun in tmp:
-        pass
+def touch(noun: str):
+    # Read
+    tmp = read(DATAFILE)
+    # Edit
+    if noun in tmp["data"]:
+        print("Item already exists! (Case-sensitive)")
+        sys.exit(1)
+    else:
+        tmp["data"].insert(0, noun)
+    # Flush
+    write(DATAFILE, tmp)
+    del tmp
 
 
 
