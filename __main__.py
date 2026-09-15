@@ -81,7 +81,6 @@ def touch(noun: str):
     del buffer
 
 
-
 def rm(noun: str):
     # Read
     buffer = read(DATAFILE)
