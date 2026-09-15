@@ -67,7 +67,9 @@ args = parser.parse_args()
 
 # Definitions2
 def touch(noun):
-    read(DATAFILE)["data"]
+    tmp: list = read(DATAFILE)["data"]
+    if noun in tmp:
+        pass
 
 
 
