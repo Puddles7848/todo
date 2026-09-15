@@ -27,14 +27,14 @@ DATAFILE.touch(exist_ok=True)
 
 
 # Read/Write functions
-def write(fp: os.PathLike, obj: object):
-    with open(fp, "wt") as f:
-        json.dump(obj, f)
-
-
 def read(fp: os.PathLike) -> object:
     with open(fp, "rt") as f:
         return json.load(f)
+
+
+def write(fp: os.PathLike, obj: object):
+    with open(fp, "wt") as f:
+        json.dump(obj, f)
 
 
 # Default data
@@ -67,7 +67,8 @@ args = parser.parse_args()
 
 # Definitions2
 def touch(noun):
-    _ = read(DATAFILE)
+    read(DATAFILE)["data"]
+
 
 
 def rm(noun):
