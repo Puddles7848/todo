@@ -4,6 +4,7 @@ import json
 import os
 import sys
 from pathlib import Path
+from typing import cast
 
 # Data File
 if os.name == "posix":
@@ -28,7 +29,7 @@ data_file_path.touch(exist_ok=True)
 # Read/Write functions
 def read(fp: Path) -> dict[str, dict[str, int] | list[str]]:
     with open(fp, "rt") as f:
-        return json.load(f)
+        return cast(dict[str, dict[str, int] | list[str]], json.load(f))
 
 
 def write(fp: Path, obj: dict[str, dict[str, int] | list[str]]):
@@ -54,10 +55,10 @@ parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list.
 subparser = parser.add_subparsers(dest="verb", required=True)
 
 add_parser = subparser.add_parser("touch")
-_ = add_parser.add_argument("noun")
+_ = add_parser.add_argument("noun", type="str")
 
 del_parser = subparser.add_parser("rm")
-_ = del_parser.add_argument("noun")
+_ = del_parser.add_argument("noun", type="str")
 
 list_parser = subparser.add_parser("ls")
 
