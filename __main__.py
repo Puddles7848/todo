@@ -6,16 +6,14 @@ import sys
 from pathlib import Path
 
 # Data File
-DATAFILE = None
-
 if os.name == "posix":
     if os.getenv("XDG_DATA_HOME"):
-        DATAFILE = Path(os.getenv("XDG_DATA_HOME")) / "todo.json"
+        data_file_path = Path(str(os.getenv("XDG_DATA_HOME"))) / "todo.json" # the str is in case of none
     else:
-        DATAFILE = Path.home() / ".local" / "share" / "todo.json"
+        data_file_path = Path.home() / ".local" / "share" / "todo.json"
 elif os.name == "nt":
     if os.getenv("APPDATA"):
-        DATAFILE = Path(os.getenv("APPDATA")) / "todo.json"
+        data_file_path = Path(str(os.getenv("APPDATA"))) / "todo.json" # same as line 13
     else:
         raise OSError("%APPDATA% is not set???")
 else:
@@ -23,17 +21,17 @@ else:
         "why is your os not posix or nt what are you even using (╥﹏╥)"
     )
 # Make sure it exists
-DATAFILE.parent.mkdir(exist_ok=True, parents=True)
-DATAFILE.touch(exist_ok=True)
+data_file_path.parent.mkdir(exist_ok=True, parents=True)
+data_file_path.touch(exist_ok=True)
 
 
 # Read/Write functions
-def read(fp: os.PathLike) -> object:
+def read(fp: Path) -> dict[str, dict[str, int] | list[str]]:
     with open(fp, "rt") as f:
         return json.load(f)
 
 
-def write(fp: os.PathLike, obj: object):
+def write(fp: Path, obj: dict[str, dict[str, int] | list[str]]):
     with open(fp, "wt") as f:
         json.dump(obj, f)
 
@@ -47,9 +45,9 @@ default_data: dict[str, dict[str, int] | list[str]] = {
 
 # Try load data
 try:
-    data = read(DATAFILE)
+    data = read(data_file_path)
 except json.JSONDecodeError:
-    write(DATAFILE, default_data)
+    write(data_file_path, default_data)
 
 # ARGUMENT TIME (╥﹏╥)
 parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list...")
@@ -69,7 +67,7 @@ args = parser.parse_args()
 # Definitions2
 def touch(noun: str):
     # Read
-    buffer = read(DATAFILE)
+    buffer = read(data_file_path)
     # Edit
     if noun in buffer["data"]:
         print("Item already exists! (Case-sensitive)")
@@ -77,13 +75,13 @@ def touch(noun: str):
     else:
         buffer["data"].insert(0, noun)
     # Flush
-    write(DATAFILE, buffer)
+    write(data_file_path, buffer)
     del buffer
 
 
 def rm(noun: str):
     # Read
-    buffer = read(DATAFILE)
+    buffer = read(data_file_path)
     # Edit
     if noun in buffer["data"]:
         buffer["data"].remove(noun)
@@ -91,12 +89,12 @@ def rm(noun: str):
         print("Item doesn't exist! (Case-sensitive)")
         sys.exit(1)
     # Flush
-    write(DATAFILE, buffer)
+    write(data_file_path, buffer)
     del buffer
 
 
 def ls():
-    print(read(DATAFILE)["data"])
+    print(read(data_file_path)["data"])
 
 
 if args.verb == "touch":
