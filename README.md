@@ -19,5 +19,5 @@ And also so it doesn't get cluttered.
 Anyway, you can change it in the data yourself. I'll document it when I get there...
 
 ## To-do (the actual to-do list for this project)
-1. Add arguments using argparse (to control)
-2. Document like what like 19 said (╥﹏╥)
+1. Document like what like 19 said (╥﹏╥)
+2. Stop line 77 and 88 from crying—too lazy to TypedDict

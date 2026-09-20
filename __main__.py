@@ -55,10 +55,10 @@ parser = argparse.ArgumentParser(prog="todo", description="This is a to-do list.
 subparser = parser.add_subparsers(dest="verb", required=True)
 
 add_parser = subparser.add_parser("touch")
-_ = add_parser.add_argument("noun", type="str")
+_ = add_parser.add_argument("noun", type=str)
 
 del_parser = subparser.add_parser("rm")
-_ = del_parser.add_argument("noun", type="str")
+_ = del_parser.add_argument("noun", type=str)
 
 list_parser = subparser.add_parser("ls")
 
@@ -68,13 +68,13 @@ args = parser.parse_args()
 # Definitions2
 def touch(noun: str):
     # Read
-    buffer = read(data_file_path)
+    buffer: dict[str, dict[str, int] | list[str]] = read(data_file_path)
     # Edit
     if noun in buffer["data"]:
         print("Item already exists! (Case-sensitive)")
         sys.exit(1)
     else:
-        buffer["data"].insert(0, noun)
+        buffer["data"].insert(0, noun) # pyright: ignore [reportAttributeAccessIssue]
     # Flush
     write(data_file_path, buffer)
     del buffer
@@ -82,10 +82,10 @@ def touch(noun: str):
 
 def rm(noun: str):
     # Read
-    buffer = read(data_file_path)
+    buffer: dict[str, dict[str, int] | list[str]] = read(data_file_path)
     # Edit
     if noun in buffer["data"]:
-        buffer["data"].remove(noun)
+        buffer["data"].remove(noun)    # pyright: ignore [reportAttributeAccessIssue]
     else:
         print("Item doesn't exist! (Case-sensitive)")
         sys.exit(1)
