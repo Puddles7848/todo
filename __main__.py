@@ -106,7 +106,7 @@ def rm(noun: str):
 
 
 def ls():
-    print(read(data_file_path)["data"])
+    print("\n".join(read(data_file_path)["data"]))
 
 
 def config():
