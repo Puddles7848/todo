@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "To-do"
 version = "1.0"
@@ -15,3 +19,9 @@ readme = "README.md"
 license = "GPL-3.0-only"
 keywords = ["todo", "qol"]
 requires-python = ">=3.9"
+
+[project.scripts]
+todo = "todo:main"
+
+[tool.setuptools]
+py-modules = ["todo"]

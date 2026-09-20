@@ -1,5 +1,8 @@
 .DS_Store
 ._*
 __pycache__
-*.pyc
 .venv
+*.py[cod]
+*.egg-info/
+dist/
+build/
