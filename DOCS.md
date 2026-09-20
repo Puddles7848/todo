@@ -47,7 +47,8 @@ Run `todo config`. It's literal json.
 ```
 {"config": {"maxlen": 8}, "data": []}
 ```
-It should look something like that. The json has a key called `config`, that's a dictionary with another key called `maxlen`. It should be a positive integer. If it is 0, the cap is literally 0 and you can't create anything (╥﹏╥) If it's negative, you still can't create anything (╥﹏╥)
+It should look something like that. The json has a key called `config`, that's a dictionary with another key called `maxlen`. It should be a positive integer. If it's 0, the cap is literally 0 and you can't create anything (╥﹏╥)
+**To disable the cap,** set the maximum length to a negative number.
 
 ## Help I broke the json (╥﹏╥)
 I told you not to break it... fine...
@@ -61,4 +62,4 @@ $ todo rm-with-sudo-and-i-did-not-patse-this
 Do not paste this. Ironically, check your spelling.
 
 ## You made it to the end :3
-That's it.
+That's it. \*pat pat\*
