@@ -6,6 +6,7 @@ This is a personal project & challenge. The conditions are:
 - - another for the data
 
 
+## Why?
 It was because I occasionally add things like
 ```
 echo "Do xyz"
@@ -16,7 +17,7 @@ to my `~/.zshrc`, and I thought, "maybe i should make it real :3"
 ## Why 8 length max (by default)?
 Eight is a nice power of two (2^3)...
 And also so it doesn't get cluttered.
-Anyway, you can change it in the data yourself. I'll document it when I get there...
+Anyway, you can change it in the data yourself in the data file. In it, you can go to the `config` section and change the `max_length` value. I have no clue what happens when it's negative or 0 :3
 
 ## To-do (the actual to-do list for this project)
 1. Document like what like 19 said (╥﹏╥)
