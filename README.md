@@ -20,7 +20,7 @@ And also so it doesn't get cluttered.
 Anyway, you can change it in the data yourself in the data file. In it, you can go to the `config` section and change the `max_length` value. I have no clue what happens when it's negative or 0 :3
 
 # Docs?
-Read [DOCS.md](DOCS.md)
+Read [DOCS.md](DOCS.md) (-_-)
 
 ## To-do (the actual to-do list for this project)
 1. Stop line 77 and 88 from crying—too lazy to TypedDict
