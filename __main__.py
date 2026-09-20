@@ -116,11 +116,16 @@ def config():
     _ = subprocess.run([editor, str(data_file_path)], check=False)
 
 
-if args.verb == "touch":
-    touch(args.noun)
-elif args.verb == "rm":
-    rm(args.noun)
-elif args.verb == "ls":
-    ls()
-elif args.verb == "config":
-    config()
+def main():
+    if args.verb == "touch":
+        touch(args.noun)
+    elif args.verb == "rm":
+        rm(args.noun)
+    elif args.verb == "ls":
+        ls()
+    elif args.verb == "config":
+        config()
+
+
+if __name__ == "__main__":
+    main()
