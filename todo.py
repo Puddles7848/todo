@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -65,6 +67,11 @@ _ = add_parser.add_argument("noun", type=str)
 del_parser = subparser.add_parser("rm")
 _ = del_parser.add_argument("noun", type=str)
 
+superrm_parser = subparser.add_parser("rm-with-sudo-and-i-did-not-paste-this")
+pastedrm_parser = subparser.add_parser(
+    "rm-with-sudo-and-i-did-not-patse-this"
+)  # This one in docs.
+
 list_parser = subparser.add_parser("ls")
 
 config_parser = subparser.add_parser("config")
@@ -73,15 +80,20 @@ config_parser = subparser.add_parser("config")
 args = parser.parse_args()
 
 
-# Definitions2
+# Definitions^2
 def touch(noun: str):
     # Read
     buffer: dict[str, dict[str, int] | list[str]] = read(data_file_path)
+
+    datalen: int = len(buffer["data"])
+    maxlen: int = buffer["config"]["maxlen"]  # pyright: ignore [reportArgumentType, reportCallIssue]
+    maxlenEnabled: bool = maxlen >= 0
+
     # Edit
     if noun in buffer["data"]:
         print("Item already exists! (Case-sensitive)")
         sys.exit(1)
-    elif len(buffer["data"]) >= buffer["config"]["maxlen"]:  # pyright: ignore [reportArgumentType, reportCallIssue]
+    elif datalen >= maxlen and maxlenEnabled:
         print("List is full!")
         sys.exit(1)
     else:
@@ -105,6 +117,25 @@ def rm(noun: str):
     del buffer
 
 
+def superrm():
+    # Read
+    buffer: dict[str, dict[str, int] | list[str]] = read(data_file_path)
+    # Edit
+    buffer["data"] = []
+    # Flush
+    write(data_file_path, buffer)
+    del buffer
+
+
+def pastedrm():
+    print("""
+You pasted this...
+
+( ￣^￣)ﾉﾞ  *blanket bonk*
+""")
+    sys.exit(1)
+
+
 def ls():
     print("\n".join(read(data_file_path)["data"]))
 
@@ -125,6 +156,12 @@ def main():
         ls()
     elif args.verb == "config":
         config()
+    elif args.verb == "rm-with-sudo-and-i-did-not-paste-this":
+        superrm()
+    elif args.verb == "rm-with-sudo-and-i-did-not-patse-this":
+        pastedrm()
+    else:
+        raise ValueError(f"Unknown verb: {args.verb}")
 
 
 if __name__ == "__main__":
