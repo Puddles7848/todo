@@ -53,5 +53,12 @@ It should look something like that. The json has a key called `config`, that's a
 I told you not to break it... fine...
 So you can temporarily set your editor to either `ls` or `rm` (dangerous). If it's `ls`, just use that path next to `rm`. Delete the file any way actually. If there is no file, it regenerates itself. And yes **YOU LOSE YOUR DATA AND CONFIG.**
 
+## Deleting all data (preserves config)
+**YOU LOSE YOUR TODO LIST (╥﹏╥)** Okay anyway, it is
+```
+$ todo rm-with-sudo-and-i-did-not-patse-this
+```
+Do not paste this. Ironically, check your spelling.
+
 ## You made it to the end :3
 That's it.

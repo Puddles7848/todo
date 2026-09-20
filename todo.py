@@ -70,7 +70,7 @@ _ = del_parser.add_argument("noun", type=str)
 superrm_parser = subparser.add_parser("rm-with-sudo-and-i-did-not-paste-this")
 pastedrm_parser = subparser.add_parser(
     "rm-with-sudo-and-i-did-not-patse-this"
-)  # This one in docs.
+)  # psst... this is a feature don't tell anyone :3
 
 list_parser = subparser.add_parser("ls")
 
