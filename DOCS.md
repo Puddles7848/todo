@@ -30,6 +30,8 @@ $ todo ls
 ```
 It's just ls... it lists what you have in your to-do list...
 
+# Advanced Section
+
 ## Config
 Now this one is not self-explanatory. It just executes `$EDITOR /path/to/config/file`. Yes. Bring Your Own Editor. If `$EDITOR` is not set, it will fail with `OSError`. If you want to know where is it? Or maybe just want to cat it? Hear me out:
 ```
@@ -42,7 +44,7 @@ Don't forget to change your editor back okay (╥﹏╥)
 AND DON'T BREAK THE JSON
 Scroll down if you did :3
 
-## Changing the cap
+## Changing & disabling the cap
 Run `todo config`. It's literal json.
 ```
 {"config": {"maxlen": 8}, "data": []}
