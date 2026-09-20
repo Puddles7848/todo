@@ -1,2 +1,17 @@
 [project]
 name = "To-do"
+version = "1.0"
+dependencies = [
+    "argparse",
+    "json",
+    "os",
+    "subprocess",
+    "sys",
+    "pathlib",
+    "typing"
+]
+authors = [{name = "Rahul Aryan", email = "puddles7848@gmail.com"},]
+readme = "README.md"
+license = "GPL-3.0-only"
+keywords = ["todo", "qol"]
+requires-python = ">=3.9"
